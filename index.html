@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary, Aeshtly</title>
+
+  <!-- ================================================================
+       FONTS
+       Fredoka   -> chunky, round headings
+       Caveat    -> handwriting for the letter
+       Quicksand -> soft body text
+       ================================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==============================================================
+       1. THEME  (flat cartoon colors + thick brown outlines)
+       ============================================================== */
+    :root {
+      --outline:      #4A2F1B;   /* dark brown line-art */
+      --bear:         #C9852C;   /* ochre bear fur      */
+      --bear-light:   #DDA04A;
+      --honey:        #F9C80E;   /* bright yellow       */
+      --honey-soft:   #FFE27A;
+      --cream:        #FFF8EC;   /* page background     */
+      --cream-dot:    #F6E6C8;
+      --paper:        #FFFFFF;
+      --pink:         #F6A5A5;
+      --pink-soft:    #FFD8D4;
+      --leaf:         #8DBF63;
+
+      --line:         4px solid var(--outline);
+      --sticker:      6px 6px 0 var(--outline);
+      --radius:       26px;
+
+      --font-title:   "Fredoka", "Trebuchet MS", sans-serif;
+      --font-body:    "Quicksand", "Segoe UI", sans-serif;
+      --font-hand:    "Caveat", "Comic Sans MS", cursive;
+    }
+
+    /* ==============================================================
+       2. BASE
+       ============================================================== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 500;
+      color: var(--outline);
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(var(--cream-dot) 3px, transparent 3px),
+        radial-gradient(var(--cream-dot) 3px, transparent 3px);
+      background-size: 48px 48px;
+      background-position: 0 0, 24px 24px;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    svg.icon { display: block; overflow: visible; }
+
+    section {
+      position: relative;
+      padding: 100px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      text-align: center;
+      color: var(--outline);
+      line-height: 1.1;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--bear);
+      font-weight: 600;
+      margin: 10px 0 56px;
+    }
+
+    /* little row of hearts used under titles */
+    .title-deco {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .title-deco svg { width: 18px; height: 18px; }
+    .title-deco svg:nth-child(2) { width: 24px; height: 24px; margin-top: -3px; }
+
+    /* ==============================================================
+       3. FALLING DECORATIONS
+       ============================================================== */
+    #sky {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floater {
+      position: absolute;
+      top: -50px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      50%  { transform: translate(35px, 55vh) rotate(160deg); }
+      100% { transform: translate(-15px, 115vh) rotate(320deg); }
+    }
+
+    main, footer { position: relative; z-index: 1; }
+
+    /* ==============================================================
+       4. HERO
+       ============================================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-bear {
+      width: min(250px, 60vw);
+      animation: floaty 3.6s ease-in-out infinite;
+    }
+
+    .hero-shadow {
+      width: min(150px, 36vw);
+      height: 16px;
+      margin-top: 6px;
+      background: rgba(74, 47, 27, 0.12);
+      border-radius: 50%;
+      animation: shadow-pulse 3.6s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50%      { transform: translateY(-16px) rotate(3deg); }
+    }
+    @keyframes shadow-pulse {
+      0%, 100% { transform: scaleX(1);   opacity: 1; }
+      50%      { transform: scaleX(0.8); opacity: 0.6; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 26px;
+      background: var(--honey);
+      border: var(--line);
+      box-shadow: 4px 4px 0 var(--outline);
+      font-family: var(--font-title);
+      font-weight: 600;
+      padding: 6px 20px;
+      border-radius: 999px;
+      letter-spacing: 2px;
+      font-size: 0.95rem;
+      animation: pop-in 0.7s cubic-bezier(.34,1.56,.64,1) both 0.2s;
+    }
+    .hero-badge svg { width: 16px; height: 16px; }
+
+    .hero h1 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: clamp(2.4rem, 8vw, 5rem);
+      line-height: 1.05;
+      margin-top: 22px;
+      color: var(--outline);
+      text-shadow: 4px 4px 0 var(--honey);
+    }
+
+    .hero h1 span {
+      display: inline-block;
+      animation: letter-bounce 0.7s cubic-bezier(.34,1.56,.64,1) both;
+    }
+
+    @keyframes letter-bounce {
+      0%   { transform: translateY(-70px) scale(0.3); opacity: 0; }
+      100% { transform: translateY(0) scale(1);       opacity: 1; }
+    }
+
+    .hero .her-name {
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: clamp(3rem, 10vw, 5.6rem);
+      line-height: 1;
+      color: var(--bear);
+      margin-top: 6px;
+      -webkit-text-stroke: 1.5px var(--outline);
+      animation: fade-up 0.9s ease both 1.6s;
+    }
+
+    .hero p.lead {
+      font-size: 1.15rem;
+      max-width: 520px;
+      margin-top: 14px;
+      animation: fade-up 0.9s ease both 1.9s;
+    }
+
+    .scroll-hint {
+      margin-top: 46px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--bear);
+      font-family: var(--font-title);
+      font-weight: 600;
+      text-decoration: none;
+      animation: fade-up 0.9s ease both 2.2s;
+    }
+    .scroll-hint svg {
+      width: 34px; height: 34px;
+      animation: hop 1.4s ease-in-out infinite;
+    }
+
+    @keyframes hop {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(9px); }
+    }
+    @keyframes pop-in {
+      0%   { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fade-up {
+      0%   { transform: translateY(24px); opacity: 0; }
+      100% { transform: translateY(0);    opacity: 1; }
+    }
+
+    /* ==============================================================
+       5. TOGETHER COUNTER
+       ============================================================== */
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 22px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .counter-box {
+      background: var(--paper);
+      border: var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--sticker);
+      padding: 22px 10px 18px;
+      text-align: center;
+      transition: transform 0.25s ease;
+    }
+    .counter-box:nth-child(odd):hover  { transform: translateY(-6px) rotate(-2deg); }
+    .counter-box:nth-child(even):hover { transform: translateY(-6px) rotate(2deg); }
+
+    .counter-box .num {
+      display: block;
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      line-height: 1.1;
+      color: var(--bear);
+    }
+    .counter-box .label {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.78rem;
+    }
+
+    /* ==============================================================
+       6. THE LETTER   (envelope opens -> letter unfolds)
+       ============================================================== */
+    .letter-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* --- envelope --- */
+    .envelope {
+      position: relative;
+      width: min(360px, 84vw);
+      aspect-ratio: 3 / 2;
+      margin-top: 80px;          /* room for the flap when it flips up */
+      cursor: pointer;
+      perspective: 1000px;
+      animation: wiggle 3s ease-in-out infinite;
+    }
+    .envelope.opened  { animation: none; cursor: default; }
+    .envelope.leaving { animation: env-leave 0.6s ease forwards; }
+
+    .envelope > * { position: absolute; }
+    .env-back, .env-front { inset: 0; width: 100%; height: 100%; }
+
+    .env-back  { z-index: 1; }
+    .env-front { z-index: 3; }
+
+    .env-paper {
+      z-index: 2;
+      left: 9%; right: 9%;
+      top: 8%;
+      height: 80%;
+      background:
+        repeating-linear-gradient(to bottom, transparent 0 14px, var(--cream-dot) 14px 16px),
+        var(--paper);
+      border: 3px solid var(--outline);
+      border-radius: 10px;
+      transition: transform 0.7s cubic-bezier(.34,1.3,.64,1) 0.45s;
+    }
+    .envelope.opened .env-paper { transform: translateY(-48%); }
+
+    .env-flap {
+      z-index: 4;
+      top: 0; left: 0;
+      width: 100%;
+      height: 62%;
+      transform-origin: top center;
+      transition: transform 0.6s ease, z-index 0s linear 0.3s;
+    }
+    .envelope.opened .env-flap {
+      transform: rotateX(180deg);
+      z-index: 0;
+    }
+
+    .env-seal {
+      z-index: 5;
+      top: 46%; left: 50%;
+      width: 58px; height: 58px;
+      transform: translate(-50%, -50%);
+      transition: transform 0.35s ease, opacity 0.3s ease;
+    }
+    .envelope.opened .env-seal {
+      transform: translate(-50%, -50%) scale(0) rotate(90deg);
+      opacity: 0;
+    }
+
+    @keyframes wiggle {
+      0%, 84%, 100% { transform: rotate(0deg); }
+      87% { transform: rotate(-4deg); }
+      90% { transform: rotate(4deg); }
+      93% { transform: rotate(-2deg); }
+      96% { transform: rotate(1deg); }
+    }
+    @keyframes env-leave {
+      to { transform: translateY(30px) scale(0.85); opacity: 0; }
+    }
+
+    .envelope-hint {
+      margin-top: 26px;
+      font-family: var(--font-title);
+      font-weight: 600;
+      color: var(--bear);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: hop 1.4s ease-in-out infinite;
+    }
+    .envelope-hint svg { width: 18px; height: 18px; }
+
+    /* --- letter paper --- */
+    .letter {
+      position: relative;
+      width: min(720px, 100%);
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0 37px,
+          var(--cream-dot) 37px 39px
+        ),
+        var(--paper);
+      background-position: 0 22px;
+      border: var(--line);
+      border-radius: 22px;
+      box-shadow: 8px 8px 0 var(--outline);
+      padding: 64px clamp(24px, 6vw, 72px);
+      font-family: var(--font-hand);
+      font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+      font-weight: 500;
+      line-height: 39px;
+      transform-origin: top center;
+    }
+    .letter.show { animation: unfold 0.9s cubic-bezier(.34,1.3,.64,1) both; }
+
+    @keyframes unfold {
+      0%   { transform: translateY(-40px) scaleY(0.15) rotate(-2deg); opacity: 0; }
+      50%  { opacity: 1; }
+      100% { transform: translateY(0) scaleY(1) rotate(0deg); opacity: 1; }
+    }
+
+    /* tape strips */
+    .letter::before,
+    .letter::after {
+      content: "";
+      position: absolute;
+      top: -18px;
+      width: 112px; height: 34px;
+      background: repeating-linear-gradient(45deg, var(--honey-soft) 0 10px, var(--pink-soft) 10px 20px);
+      border: 2px solid rgba(74, 47, 27, 0.25);
+      opacity: 0.95;
+    }
+    .letter::before { left: 34px;  transform: rotate(-7deg); }
+    .letter::after  { right: 34px; transform: rotate(6deg); }
+
+    .letter .greeting {
+      font-size: 1.35em;
+      font-weight: 700;
+      color: var(--bear);
+      margin-bottom: 39px;
+    }
+    .letter p { margin-bottom: 39px; }
+    .letter .inline-heart {
+      display: inline-block;
+      width: 0.9em; height: 0.85em;
+      vertical-align: -0.08em;
+    }
+    .letter .signoff {
+      text-align: right;
+      font-weight: 700;
+      color: var(--bear);
+    }
+
+    .letter .corner-bear {
+      position: absolute;
+      bottom: -40px; right: -24px;
+      width: 104px;
+      animation: peek 3s ease-in-out infinite;
+    }
+    .letter .corner-flower {
+      position: absolute;
+      bottom: 26px; left: -22px;
+      width: 44px;
+      animation: spin 9s linear infinite;
+    }
+
+    @keyframes peek {
+      0%, 100% { transform: rotate(12deg) translateY(0); }
+      50%      { transform: rotate(5deg)  translateY(-8px); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ==============================================================
+       7. MEMORIES TIMELINE
+       ============================================================== */
+    .timeline {
+      position: relative;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%; top: 10px; bottom: 40px;
+      border-left: 5px dashed var(--bear-light);
+      transform: translateX(-50%);
+    }
+
+    .moment {
+      position: relative;
+      width: 50%;
+      padding: 0 46px 50px;
+    }
+    .moment:nth-child(odd)  { left: 0;   text-align: right; }
+    .moment:nth-child(even) { left: 50%; }
+
+    .moment .dot {
+      position: absolute;
+      top: 8px;
+      width: 52px; height: 52px;
+      background: var(--honey);
+      border: var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      z-index: 1;
+    }
+    .moment .dot svg { width: 28px; height: 28px; }
+    .moment:nth-child(odd)  .dot { right: -26px; }
+    .moment:nth-child(even) .dot { left: -26px; }
+
+    .moment .card {
+      background: var(--paper);
+      border: var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--sticker);
+      padding: 20px 24px;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .moment:nth-child(odd)  .card:hover { transform: rotate(-1.5deg) scale(1.03); }
+    .moment:nth-child(even) .card:hover { transform: rotate(1.5deg)  scale(1.03); }
+
+    .moment .date {
+      display: inline-block;
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      background: var(--pink-soft);
+      border-radius: 999px;
+      padding: 2px 12px;
+    }
+    .moment h3 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1.35rem;
+      margin: 8px 0 4px;
+    }
+
+    /* ==============================================================
+       8b. SCRAPBOOK PHOTO COLLAGE
+       ============================================================== */
+    .scrapbook {
+      position: relative;
+      background-color: #F3DDB6;
+      background-image:
+        radial-gradient(rgba(74, 47, 27, 0.08) 1.5px, transparent 1.5px);
+      background-size: 14px 14px;
+      border: var(--line);
+      border-radius: 34px;
+      box-shadow: 10px 10px 0 var(--outline);
+      padding: clamp(34px, 5vw, 60px) clamp(18px, 4vw, 50px) clamp(40px, 5vw, 64px);
+      columns: 3 260px;
+      column-gap: clamp(22px, 3vw, 38px);
+    }
+
+    /* scribbled "our scrapbook" label stuck on the board */
+    .scrapbook-label {
+      position: absolute;
+      top: -26px; left: 50%;
+      transform: translateX(-50%) rotate(-3deg);
+      background: var(--honey);
+      border: var(--line);
+      box-shadow: 4px 4px 0 var(--outline);
+      border-radius: 14px;
+      padding: 6px 26px;
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: 1.7rem;
+      white-space: nowrap;
+      z-index: 3;
+    }
+
+    .polaroid {
+      position: relative;
+      display: block;
+      width: 100%;
+      break-inside: avoid;
+      margin: 0 0 clamp(30px, 4vw, 44px);
+      background: var(--paper);
+      border: var(--line);
+      border-radius: 8px;
+      box-shadow: 6px 6px 0 rgba(74, 47, 27, 0.85);
+      padding: 12px 12px 0;
+      cursor: zoom-in;
+      font: inherit;
+      color: inherit;
+      text-align: center;
+      transform: rotate(var(--tilt, -2deg));
+      transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.35s;
+    }
+    .polaroid:hover,
+    .polaroid:focus-visible {
+      transform: rotate(0deg) scale(1.04);
+      box-shadow: 10px 10px 0 var(--outline);
+      z-index: 2;
+      outline: none;
+    }
+
+    .polaroid img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 3px solid var(--outline);
+      border-radius: 4px;
+      background: var(--cream-dot);
+    }
+
+    .polaroid .p-cap { display: block; padding: 12px 6px 16px; }
+
+    .polaroid .p-date {
+      display: inline-block;
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      background: var(--pink-soft);
+      border-radius: 999px;
+      padding: 1px 12px;
+    }
+    .polaroid .p-title {
+      display: block;
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: 1.75rem;
+      line-height: 1.1;
+      margin-top: 6px;
+    }
+
+    /* washi tape on each photo (alternating colors) */
+    .polaroid::before {
+      content: "";
+      position: absolute;
+      top: -17px; left: 50%;
+      width: 96px; height: 30px;
+      transform: translateX(-50%) rotate(var(--tape, -4deg));
+      background: repeating-linear-gradient(45deg, var(--honey-soft) 0 9px, var(--pink-soft) 9px 18px);
+      border: 2px solid rgba(74, 47, 27, 0.22);
+      opacity: 0.95;
+    }
+    .polaroid:nth-child(3n+2)::before {
+      background: repeating-linear-gradient(-45deg, #FFFFFF 0 9px, var(--pink-soft) 9px 18px);
+    }
+    .polaroid:nth-child(3n)::before {
+      background: repeating-linear-gradient(90deg, var(--honey-soft) 0 9px, #FFFFFF 9px 18px);
+    }
+
+    /* little doodle stuck on a photo corner */
+    .polaroid .sticker {
+      position: absolute;
+      width: 46px; height: 46px;
+      z-index: 2;
+      animation: bob 2.8s ease-in-out infinite;
+    }
+    .polaroid .sticker.tr { top: -20px;   right: -18px; }
+    .polaroid .sticker.bl { bottom: 40px; left: -22px; }
+    .polaroid .sticker.br { bottom: 30px; right: -20px; }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50%      { transform: translateY(-6px) rotate(8deg); }
+    }
+
+    /* --- lightbox (opens when a photo is clicked) --- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      background: rgba(74, 47, 27, 0.72);
+      backdrop-filter: blur(4px);
+      animation: fade-in 0.3s ease both;
+    }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+    .lightbox-card {
+      position: relative;
+      background: var(--paper);
+      border: var(--line);
+      border-radius: 12px;
+      box-shadow: 10px 10px 0 var(--outline);
+      padding: 16px 16px 0;
+      max-width: min(720px, 100%);
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      animation: pop-in 0.45s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    .lightbox-card img {
+      display: block;
+      max-width: 100%;
+      max-height: 62vh;
+      margin: 0 auto;
+      object-fit: contain;
+      border: 3px solid var(--outline);
+      border-radius: 6px;
+    }
+    .lightbox-text {
+      padding: 14px 8px 20px;
+      text-align: center;
+      overflow-y: auto;
+    }
+    .lightbox-text .p-date {
+      display: inline-block;
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      background: var(--pink-soft);
+      border-radius: 999px;
+      padding: 2px 14px;
+    }
+    .lightbox-text h3 {
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: 2.1rem;
+      line-height: 1.1;
+      margin: 6px 0 4px;
+    }
+    .lightbox-text p { font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+
+    .lightbox-close {
+      position: absolute;
+      top: -20px; right: -16px;
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--honey);
+      border: var(--line);
+      box-shadow: 3px 3px 0 var(--outline);
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--outline);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .lightbox-close:hover { transform: rotate(90deg) scale(1.08); }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 40%;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: var(--line);
+      box-shadow: 3px 3px 0 var(--outline);
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--outline);
+      cursor: pointer;
+    }
+    .lightbox-nav.prev { left: -22px; }
+    .lightbox-nav.next { right: -22px; }
+
+    /* ==============================================================
+       9. FOOTER
+       ============================================================== */
+    footer {
+      text-align: center;
+      padding: 40px 20px 90px;
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: 1.15rem;
+    }
+    footer .bears-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    footer .bears-row svg { width: 58px; animation: floaty 3s ease-in-out infinite; }
+    footer .bears-row svg:nth-child(2) { width: 78px; animation-delay: 0.4s; }
+    footer .bears-row svg:nth-child(3) { animation-delay: 0.8s; }
+    footer small {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--bear);
+    }
+
+    /* ==============================================================
+       10. SCROLL REVEAL + CLICK BURST
+       ============================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.34,1.3,.64,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .burst {
+      position: fixed;
+      width: 18px; height: 18px;
+      margin: -9px 0 0 -9px;
+      pointer-events: none;
+      z-index: 50;
+      animation: burst 0.9s ease-out forwards;
+    }
+    @keyframes burst {
+      0%   { transform: translate(0, 0) scale(0.3); opacity: 1; }
+      100% { transform: translate(var(--dx), var(--dy)) scale(1.1) rotate(var(--rot)); opacity: 0; }
+    }
+
+    /* ==============================================================
+       11. MOBILE + REDUCED MOTION
+       ============================================================== */
+    @media (max-width: 680px) {
+      .timeline::before { left: 26px; }
+      .moment,
+      .moment:nth-child(odd),
+      .moment:nth-child(even) {
+        width: 100%;
+        left: 0;
+        text-align: left;
+        padding: 0 0 40px 74px;
+      }
+      .moment:nth-child(odd) .dot,
+      .moment:nth-child(even) .dot { left: 0; right: auto; }
+      .letter .corner-bear { right: -8px; width: 84px; }
+      .letter .corner-flower { left: -12px; }
+      .scrapbook-label { font-size: 1.35rem; padding: 4px 18px; }
+      .lightbox-nav.prev { left: -10px; }
+      .lightbox-nav.next { right: -10px; }
+      .lightbox-close { right: -6px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================================================================
+       HAND-MADE ASSETS  (all drawn as SVG, reused with <use href="#id">)
+       ================================================================ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+
+      <!-- Honeybun the bear -->
+      <symbol id="bear" viewBox="0 0 200 190">
+        <path d="M100 34 Q101 22 100 10" stroke="#4A2F1B" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="87" cy="13" rx="13" ry="8" fill="#8DBF63" stroke="#4A2F1B" stroke-width="4" transform="rotate(-25 87 13)"/>
+        <ellipse cx="113" cy="13" rx="13" ry="8" fill="#8DBF63" stroke="#4A2F1B" stroke-width="4" transform="rotate(25 113 13)"/>
+        <circle cx="42"  cy="60" r="28" fill="#C9852C" stroke="#4A2F1B" stroke-width="6"/>
+        <circle cx="158" cy="60" r="28" fill="#C9852C" stroke="#4A2F1B" stroke-width="6"/>
+        <circle cx="42"  cy="62" r="14" fill="#F6A5A5"/>
+        <circle cx="158" cy="62" r="14" fill="#F6A5A5"/>
+        <path d="M100 40 C150 40 182 70 182 112 C182 152 146 180 100 180 C54 180 18 152 18 112 C18 70 50 40 100 40 Z" fill="#C9852C" stroke="#4A2F1B" stroke-width="6"/>
+        <ellipse cx="100" cy="134" rx="34" ry="26" fill="#FFF8EC" stroke="#4A2F1B" stroke-width="5"/>
+        <path d="M58 106 Q68 94 78 106"   stroke="#4A2F1B" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M122 106 Q132 94 142 106" stroke="#4A2F1B" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="50"  cy="130" rx="13" ry="8" fill="#F6A5A5"/>
+        <ellipse cx="150" cy="130" rx="13" ry="8" fill="#F6A5A5"/>
+        <path d="M100 133 C92 126 86 121 92 117 C96 114 100 118 100 120 C100 118 104 114 108 117 C114 121 108 126 100 133 Z" fill="#4A2F1B"/>
+        <path d="M90 142 Q100 151 110 142" stroke="#4A2F1B" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      </symbol>
+
+      <!-- heart (color comes from CSS "color") -->
+      <symbol id="heart" viewBox="0 0 32 30">
+        <path d="M16 27 C6 20 2 14 3.5 8.5 C5 3 12 2 16 7.5 C20 2 27 3 28.5 8.5 C30 14 26 20 16 27 Z" fill="currentColor" stroke="#4A2F1B" stroke-width="2.6" stroke-linejoin="round"/>
+        <ellipse cx="9.5" cy="10" rx="2.4" ry="1.6" fill="#FFFFFF" opacity="0.7" transform="rotate(-35 9.5 10)"/>
+      </symbol>
+
+      <!-- flower -->
+      <symbol id="flower" viewBox="0 0 40 40">
+        <g fill="currentColor" stroke="#4A2F1B" stroke-width="2.4">
+          <circle cx="20"   cy="10.5" r="7.5"/>
+          <circle cx="29"   cy="17"   r="7.5"/>
+          <circle cx="25.6" cy="27.6" r="7.5"/>
+          <circle cx="14.4" cy="27.6" r="7.5"/>
+          <circle cx="11"   cy="17"   r="7.5"/>
+        </g>
+        <circle cx="20" cy="20" r="5.5" fill="#F9C80E" stroke="#4A2F1B" stroke-width="2.4"/>
+      </symbol>
+
+      <!-- sparkle -->
+      <symbol id="sparkle" viewBox="0 0 30 30">
+        <path d="M15 2 Q17 13 28 15 Q17 17 15 28 Q13 17 2 15 Q13 13 15 2 Z" fill="currentColor" stroke="#4A2F1B" stroke-width="2.2" stroke-linejoin="round"/>
+      </symbol>
+
+      <!-- honey drop -->
+      <symbol id="drop" viewBox="0 0 24 32">
+        <path d="M12 2 C12 2 3 14 3 21 A9 9 0 0 0 21 21 C21 14 12 2 12 2 Z" fill="#F9C80E" stroke="#4A2F1B" stroke-width="2.4" stroke-linejoin="round"/>
+        <ellipse cx="8.5" cy="21" rx="1.8" ry="3" fill="#FFFFFF" opacity="0.8"/>
+      </symbol>
+
+      <!-- honey pot -->
+      <symbol id="pot" viewBox="0 0 64 64">
+        <path d="M14 24 C5 34 7 57 32 59 C57 57 59 34 50 24 Z" fill="#C9852C" stroke="#4A2F1B" stroke-width="3.5" stroke-linejoin="round"/>
+        <rect x="11" y="15" width="42" height="11" rx="5.5" fill="#F9C80E" stroke="#4A2F1B" stroke-width="3.5"/>
+        <path d="M20 26 Q20 33 23 33 Q26 33 26 26" fill="#F9C80E" stroke="#4A2F1B" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M32 50 C25 45 22 42 24.5 39 C26.5 37 29.5 38 32 41 C34.5 38 37.5 37 39.5 39 C42 42 39 45 32 50 Z" fill="#FFF8EC"/>
+      </symbol>
+
+      <!-- two hearts (became "us") -->
+      <symbol id="hearts" viewBox="0 0 64 64">
+        <g transform="translate(4 14) rotate(-14 16 15) scale(1.15)"><use href="#heart" style="color:#F6A5A5"/></g>
+        <g transform="translate(24 20) rotate(12 16 15) scale(1.1)"><use href="#heart" style="color:#FFFFFF"/></g>
+      </symbol>
+
+      <!-- map pin -->
+      <symbol id="pin" viewBox="0 0 64 64">
+        <path d="M32 59 C32 59 11 37 11 24 A21 21 0 0 1 53 24 C53 37 32 59 32 59 Z" fill="#F6A5A5" stroke="#4A2F1B" stroke-width="3.5" stroke-linejoin="round"/>
+        <circle cx="32" cy="24" r="8" fill="#FFF8EC" stroke="#4A2F1B" stroke-width="3.5"/>
+      </symbol>
+
+      <!-- cake -->
+      <symbol id="cake" viewBox="0 0 64 64">
+        <rect x="30" y="7" width="5" height="13" rx="2" fill="#F6A5A5" stroke="#4A2F1B" stroke-width="2.5"/>
+        <path d="M32.5 0 C35.5 4 35.5 6 32.5 7 C29.5 6 29.5 4 32.5 0 Z" fill="#F9C80E" stroke="#4A2F1B" stroke-width="2"/>
+        <rect x="17" y="20" width="31" height="15" rx="4" fill="#FFF8EC" stroke="#4A2F1B" stroke-width="3.5"/>
+        <rect x="9"  y="34" width="47" height="22" rx="5" fill="#C9852C" stroke="#4A2F1B" stroke-width="3.5"/>
+        <path d="M9 41 Q15 47 21 41 Q27 47 33 41 Q39 47 45 41 Q51 47 56 41" fill="none" stroke="#FFF8EC" stroke-width="4" stroke-linecap="round"/>
+      </symbol>
+
+      <!-- cloud -->
+      <symbol id="cloud" viewBox="0 0 64 44">
+        <path d="M15 40 C5 40 3 27 12 24 C10 13 24 8 29 16 C33 5 50 7 50 19 C60 19 62 34 53 39 Z" fill="#FFFFFF" stroke="#4A2F1B" stroke-width="3.5" stroke-linejoin="round"/>
+        <ellipse cx="22" cy="31" rx="4" ry="2.5" fill="#F6A5A5"/>
+        <ellipse cx="44" cy="31" rx="4" ry="2.5" fill="#F6A5A5"/>
+        <path d="M30 30 Q33 33 36 30" fill="none" stroke="#4A2F1B" stroke-width="2.5" stroke-linecap="round"/>
+      </symbol>
+
+      <!-- teacup -->
+      <symbol id="cup" viewBox="0 0 64 64">
+        <path d="M24 6 Q20 11 24 16 Q28 21 24 26" fill="none" stroke="#C9852C" stroke-width="3" stroke-linecap="round"/>
+        <path d="M34 4 Q30 9 34 14 Q38 19 34 24" fill="none" stroke="#C9852C" stroke-width="3" stroke-linecap="round"/>
+        <path d="M46 36 C58 34 58 50 44 48" fill="none" stroke="#4A2F1B" stroke-width="3.5"/>
+        <path d="M8 30 H50 C50 46 42 56 29 56 C16 56 8 46 8 30 Z" fill="#FFF8EC" stroke="#4A2F1B" stroke-width="3.5" stroke-linejoin="round"/>
+        <path d="M29 48 C23 44 20 41 22.5 38.5 C24.5 36.5 27 37.5 29 40 C31 37.5 33.5 36.5 35.5 38.5 C38 41 35 44 29 48 Z" fill="#F6A5A5"/>
+        <rect x="4" y="56" width="50" height="5" rx="2.5" fill="#C9852C" stroke="#4A2F1B" stroke-width="3"/>
+      </symbol>
+
+      <!-- paw print -->
+      <symbol id="paw" viewBox="0 0 40 40">
+        <g fill="#C9852C" stroke="#4A2F1B" stroke-width="2.4">
+          <path d="M20 21 C27 21 31 27 30 32 C29 37 24 36 20 36 C16 36 11 37 10 32 C9 27 13 21 20 21 Z"/>
+          <ellipse cx="8"  cy="17" rx="4" ry="5"/>
+          <ellipse cx="15" cy="9"  rx="4" ry="5"/>
+          <ellipse cx="25" cy="9"  rx="4" ry="5"/>
+          <ellipse cx="32" cy="17" rx="4" ry="5"/>
+        </g>
+      </symbol>
+
+      <!-- apple (a nod to her apple edit of us) -->
+      <symbol id="apple" viewBox="0 0 64 64">
+        <path d="M32 18 Q31 10 34 4" fill="none" stroke="#4A2F1B" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M36 12 C40 5 48 5 50 8 C46 13 40 14 36 12 Z" fill="#8DBF63" stroke="#4A2F1B" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M32 20 C22 12 6 16 7 34 C8 50 20 61 32 56 C44 61 56 50 57 34 C58 16 42 12 32 20 Z" fill="#E0635A" stroke="#4A2F1B" stroke-width="3.5" stroke-linejoin="round"/>
+        <ellipse cx="19" cy="30" rx="4" ry="6" fill="#FFFFFF" opacity="0.6" transform="rotate(20 19 30)"/>
+      </symbol>
+
+      <!-- graduation cap -->
+      <symbol id="cap" viewBox="0 0 64 64">
+        <path d="M18 30 V42 C18 48 46 48 46 42 V30" fill="#C9852C" stroke="#4A2F1B" stroke-width="3.5" stroke-linejoin="round"/>
+        <path d="M32 12 L60 24 L32 36 L4 24 Z" fill="#4A2F1B" stroke="#4A2F1B" stroke-width="3.5" stroke-linejoin="round"/>
+        <path d="M32 24 L52 30 V46" fill="none" stroke="#F9C80E" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="52" cy="49" r="4" fill="#F9C80E" stroke="#4A2F1B" stroke-width="2"/>
+      </symbol>
+
+      <!-- envelope seal -->
+      <symbol id="seal" viewBox="0 0 64 64">
+        <path d="M32 3 L37 9 L45 6 L47 14 L55 15 L54 23 L61 28 L56 34 L60 41 L53 45 L53 53 L45 53 L41 60 L34 56 L27 61 L23 54 L15 55 L14 47 L6 44 L9 36 L3 30 L9 25 L7 17 L15 15 L17 7 L25 9 Z" fill="#F6A5A5" stroke="#4A2F1B" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M32 45 C22 37 17 32 21 26 C24 22 29 23 32 28 C35 23 40 22 43 26 C47 32 42 37 32 45 Z" fill="#FFF8EC" stroke="#4A2F1B" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <!-- falling decorations are added here by the script -->
+  <div id="sky" aria-hidden="true"></div>
+
+  <main>
+
+    <!-- ==============================================================
+         SECTION: HERO
+         ============================================================== -->
+    <section class="hero" id="top">
+      <svg class="icon hero-bear" viewBox="0 0 200 190" role="img" aria-label="A happy honey bear">
+        <use href="#bear" />
+      </svg>
+      <div class="hero-shadow"></div>
+
+      <span class="hero-badge">
+        <svg class="icon" style="color:#F6A5A5"><use href="#heart" /></svg>
+        365 DAYS OF US
+        <svg class="icon" style="color:#F6A5A5"><use href="#heart" /></svg>
+      </span>
+
+      <!-- split into bouncing letters by the script -->
+      <h1 id="hero-title">Happy 1st Anniversary</h1>
+      <div class="her-name">Aeshtly</div>
+
+      <p class="lead">November 24, 2025 was the day you became my partner. Here's to our first year together.</p>
+
+      <a class="scroll-hint" href="#counter">
+        <span>scroll down, my love</span>
+        <svg class="icon"><use href="#paw" /></svg>
+      </a>
+    </section>
+
+    <!-- ==============================================================
+         SECTION: TOGETHER COUNTER
+         ============================================================== -->
+    <section id="counter" class="reveal">
+      <h2 class="section-title">We've Been Together For</h2>
+      <div class="title-deco" aria-hidden="true">
+        <svg class="icon" style="color:#F6A5A5"><use href="#heart" /></svg>
+        <svg class="icon"><use href="#drop" /></svg>
+        <svg class="icon" style="color:#F6A5A5"><use href="#heart" /></svg>
+      </div>
+      <p class="section-subtitle">since November 24, 2025, and counting</p>
+
+      <div class="counter-grid">
+        <div class="counter-box"><span class="num" id="c-days">0</span><span class="label">Days</span></div>
+        <div class="counter-box"><span class="num" id="c-hours">0</span><span class="label">Hours</span></div>
+        <div class="counter-box"><span class="num" id="c-mins">0</span><span class="label">Minutes</span></div>
+        <div class="counter-box"><span class="num" id="c-secs">0</span><span class="label">Seconds</span></div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECTION: THE LETTER     ✏️ WRITE YOUR MESSAGE HERE
+         ============================================================== -->
+    <section class="letter-section reveal" id="letter">
+      <h2 class="section-title">A Letter For You</h2>
+      <div class="title-deco" aria-hidden="true">
+        <svg class="icon" style="color:#F6A5A5"><use href="#heart" /></svg>
+        <svg class="icon"><use href="#drop" /></svg>
+        <svg class="icon" style="color:#F6A5A5"><use href="#heart" /></svg>
+      </div>
+      <p class="section-subtitle" id="letter-sub">tap the envelope to open it</p>
+
+      <!-- envelope -->
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the letter">
+        <svg class="env-back" viewBox="0 0 300 200" preserveAspectRatio="none">
+          <rect x="3" y="3" width="294" height="194" rx="16" fill="#E0A63A" stroke="#4A2F1B" stroke-width="5"/>
+        </svg>
+        <div class="env-paper"></div>
+        <svg class="env-front" viewBox="0 0 300 200" preserveAspectRatio="none">
+          <path d="M3 62 L150 138 L297 62 L297 181 Q297 197 281 197 L19 197 Q3 197 3 181 Z" fill="#F9C80E" stroke="#4A2F1B" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M3 197 L120 122 M297 197 L180 122" stroke="#4A2F1B" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+        </svg>
+        <svg class="env-flap" viewBox="0 0 300 124" preserveAspectRatio="none">
+          <path d="M3 19 Q3 3 19 3 L281 3 Q297 3 297 19 L162 116 Q150 124 138 116 Z" fill="#C9852C" stroke="#4A2F1B" stroke-width="5" stroke-linejoin="round"/>
+        </svg>
+        <svg class="icon env-seal" viewBox="0 0 64 64"><use href="#seal" /></svg>
+      </div>
+      <div class="envelope-hint" id="envelope-hint">
+        <svg class="icon" style="color:#F9C80E"><use href="#sparkle" /></svg>
+        open me
+        <svg class="icon" style="color:#F9C80E"><use href="#sparkle" /></svg>
+      </div>
+
+      <!-- the letter (hidden until the envelope opens) -->
+      <article class="letter" id="letter-paper" hidden>
+
+        <div class="greeting">Happy anniversary, my loves, my aesthley! <svg class="icon inline-heart" viewBox="0 0 32 30" style="color:#F6A5A5" aria-label="heart"><use href="#heart" /></svg></div>
+
+        <!-- ✏️ Your message -->
+        <p>
+          I take back what I said last time na the first gift gyud kay paper flower, because now that I think about it, the actual first gift was you coming into my life. I never really expected someone like you to suddenly walk into my life, much less someone who would actually like me. Honestly, I never thought you'd see something in me because I always saw myself as just a mediocre person. But somehow, here we are, and I couldn't be any more grateful.
+        </p>
+        <p>
+          Pero regardless, this isn't really about me. I just want to tell you, from the bottom of my heart, that you are one of the greatest people in my life. You have become such a big part of who I am as a person, and I hope you know how much you mean to me. I hope that as we continue this journey together, we get to mold each other into better versions of ourselves. I want us to grow, achieve our dreams, become successful, and celebrate every little victory together.
+        </p>
+        <p>
+          I know college hasn't been easy for you, especially adjusting to this new environment, but always remember that your boyfriend will be here for you through it all, okay? Don't pressure yourself too much because life isn't just about school. I hope you still find time to enjoy life, express yourself, and embrace that freedom and creativity that I adore so much about you. Never lose that part of yourself, my love.
+        </p>
+        <p>
+          I really, really hope to be with you forever and ever. I want us to build the greatest story of our lives, one filled with memories, stupid jokes, random adventures, little arguments that we eventually laugh about, and countless moments where we get to remind each other how much we love one another. I don't expect everything to be perfect, but I do hope that whatever life throws at us, we continue choosing each other.
+        </p>
+        <p>
+          And oh my days, I really love Claude for assisting me with this whole website thingy HAHAHAHA. But I swear, dugay kaayo ko sa part sa pagsulat ani because I wanted to be careful with every word. I didn't want to just throw random sweet words at you. I wanted to write something that genuinely came from me, something that I could read back and hopefully makahilak ko while writing it huhuhuha ewdawdad. You deserve that much effort, and honestly, even this little letter doesn't feel enough to express everything I have for you.
+        </p>
+        <p>
+          I love you so, so much, my baby, my aesthley, my everything. I hope everything you've ever wished for and everything you're working so hard to achieve will eventually come into fruition (thank you merriam-webster sa definition of fruition). I hope life becomes kinder to you, that you find happiness in the little things, and that you never run out of reasons to smile. I'll always be cheering for you, whether you're winning or struggling, because I'll be proud of you either way.
+        </p>
+        <p>
+          Happy anniversary again, my love. Thank you for being my first gift, my favorite person, and one of the most beautiful things that ever happened to me.
+        </p>
+        <p>
+          Here's to us, to growing together, and to forever.
+        </p>
+        <p>
+          I LOVE YOU SO MUCHHHHH. MWA MWA MWA MWA MWA. <svg class="icon inline-heart" viewBox="0 0 32 30" style="color:#F6A5A5" aria-label="heart"><use href="#heart" /></svg>
+        </p>
+
+        <!-- ✏️ Sign-off -->
+        <div class="signoff">
+          Forever yours,<br />
+          Ramitan
+        </div>
+
+        <svg class="icon corner-flower" viewBox="0 0 40 40" style="color:#FFD8D4" aria-hidden="true"><use href="#flower" /></svg>
+        <svg class="icon corner-bear" viewBox="0 0 200 190" aria-hidden="true"><use href="#bear" /></svg>
+      </article>
+    </section>
+
+    <!-- ==============================================================
+         SECTION: OUR STORY     ✏️ EDIT DATES / TITLES / TEXT
+         ============================================================== -->
+    <section id="memories">
+      <h2 class="section-title reveal">Our Little Story</h2>
+      <p class="section-subtitle reveal">a year full of our favorite moments</p>
+
+      <div class="timeline">
+        <div class="moment reveal">
+          <span class="dot"><svg class="icon" viewBox="0 0 40 40" style="color:#FFD8D4"><use href="#flower" /></svg></span>
+          <div class="card">
+            <span class="date">NOV 20, 2025</span>
+            <h3>No Label Yet</h3>
+            <p>So romantic already, even before we gave it a name.</p>
+          </div>
+        </div>
+
+        <div class="moment reveal">
+          <span class="dot"><svg class="icon" viewBox="0 0 64 64"><use href="#hearts" /></svg></span>
+          <div class="card">
+            <span class="date">NOV 24, 2025</span>
+            <h3>Officially Partners</h3>
+            <p>The day we finally became "us".</p>
+          </div>
+        </div>
+
+        <div class="moment reveal">
+          <span class="dot"><svg class="icon" viewBox="0 0 64 64"><use href="#cap" /></svg></span>
+          <div class="card">
+            <span class="date">MAR 30, 2026</span>
+            <h3>Togas &amp; See-You-Soons</h3>
+            <p>Our graduation photos together before I traveled.</p>
+          </div>
+        </div>
+
+        <div class="moment reveal">
+          <span class="dot"><svg class="icon" viewBox="0 0 64 64"><use href="#apple" /></svg></span>
+          <div class="card">
+            <span class="date">MAY 28, 2026</span>
+            <h3>The Apple Edit</h3>
+            <p>A hangout day, and you turned us into the cutest little apples.</p>
+          </div>
+        </div>
+
+        <div class="moment reveal">
+          <span class="dot"><svg class="icon" viewBox="0 0 64 64"><use href="#pin" /></svg></span>
+          <div class="card">
+            <span class="date">JUN 22, 2026</span>
+            <h3>Future MSU-IITians</h3>
+            <p>Pop N Wings to celebrate passing our enrollment requirements, together.</p>
+          </div>
+        </div>
+
+        <div class="moment reveal">
+          <span class="dot"><svg class="icon" viewBox="0 0 30 30" style="color:#F9C80E"><use href="#sparkle" /></svg></span>
+          <div class="card">
+            <span class="date">NOV 20, 2026</span>
+            <h3>Power Couple Era</h3>
+            <p>Our latest photos, and the first of many more.</p>
+          </div>
+        </div>
+
+        <div class="moment reveal">
+          <span class="dot"><svg class="icon" viewBox="0 0 64 64"><use href="#cake" /></svg></span>
+          <div class="card">
+            <span class="date">NOV 24, 2026</span>
+            <h3>One Whole Year</h3>
+            <p>And this is only the beginning of our story.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECTION: SCRAPBOOK PHOTO COLLAGE
+         Each photo: data-title / data-date / data-story show in the
+         pop-up when clicked. Photos live in the /photos folder.
+         --tilt = how much the photo leans, --tape = tape angle
+         ============================================================== -->
+    <section id="scrapbook">
+      <h2 class="section-title reveal">Our Scrapbook</h2>
+      <p class="section-subtitle reveal">tap a photo to see it up close</p>
+
+      <div class="scrapbook reveal">
+        <span class="scrapbook-label">little moments of us</span>
+
+        <button class="polaroid" style="--tilt:-3deg; --tape:-5deg"
+          data-date="NOV 20, 2025"
+          data-title="before we had a name for it"
+          data-story="So romantic, even without a label yet. My head on your shoulder, your arm around me, and the whole world felt quiet.">
+          <img src="photos/01-no-label-yet.jpg" alt="Us leaning on each other in the bleachers" loading="lazy" />
+          <span class="p-cap">
+            <span class="p-date">NOV 20, 2025</span>
+            <span class="p-title">before we had a name for it</span>
+          </span>
+          <svg class="icon sticker tr" viewBox="0 0 32 30" style="color:#F6A5A5"><use href="#heart" /></svg>
+        </button>
+
+        <button class="polaroid" style="--tilt:2.5deg; --tape:4deg"
+          data-date="MAY 28, 2026"
+          data-title="two little apples"
+          data-story="The day we hung out and you edited us into apples. It's so cute and amazing, my baby.">
+          <img src="photos/03-apple-edit.jpg" alt="Her edit of us as two apples" loading="lazy" />
+          <span class="p-cap">
+            <span class="p-date">MAY 28, 2026</span>
+            <span class="p-title">two little apples</span>
+          </span>
+          <svg class="icon sticker br" viewBox="0 0 64 64"><use href="#apple" /></svg>
+        </button>
+
+        <button class="polaroid" style="--tilt:-1.5deg; --tape:-3deg"
+          data-date="NOV 20, 2026"
+          data-title="power couple era"
+          data-story="Our latest pictures, such a power couple to be seen. I hope to be with you forever.">
+          <img src="photos/05-power-couple.jpg" alt="Photobooth strip of us in an elevator" loading="lazy" />
+          <span class="p-cap">
+            <span class="p-date">NOV 20, 2026</span>
+            <span class="p-title">power couple era</span>
+          </span>
+          <svg class="icon sticker tr" viewBox="0 0 30 30" style="color:#F9C80E"><use href="#sparkle" /></svg>
+        </button>
+
+        <button class="polaroid" style="--tilt:2deg; --tape:5deg"
+          data-date="MAR 30, 2026"
+          data-title="togas &amp; see-you-soons"
+          data-story="Our toga pictures together before I traveled. Graduating side by side with you.">
+          <img src="photos/02-togas.jpg" alt="Photobooth strip of us in our togas" loading="lazy" />
+          <span class="p-cap">
+            <span class="p-date">MAR 30, 2026</span>
+            <span class="p-title">togas &amp; see-you-soons</span>
+          </span>
+          <svg class="icon sticker bl" viewBox="0 0 64 64"><use href="#cap" /></svg>
+        </button>
+
+        <button class="polaroid" style="--tilt:-2.5deg; --tape:-4deg"
+          data-date="JUN 22, 2026"
+          data-title="future MSU-IITians"
+          data-story="Eating at Pop N Wings after we passed our requirements for enrollment, because we're going to be MSU-IITians together.">
+          <img src="photos/04-pop-n-wings.jpg" alt="Selfie of us at Pop N Wings" loading="lazy" />
+          <span class="p-cap">
+            <span class="p-date">JUN 22, 2026</span>
+            <span class="p-title">future MSU-IITians</span>
+          </span>
+          <svg class="icon sticker tr" viewBox="0 0 32 30" style="color:#FFD8D4"><use href="#heart" /></svg>
+        </button>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="reveal">
+    <div class="bears-row" aria-hidden="true">
+      <svg class="icon" viewBox="0 0 200 190"><use href="#bear" /></svg>
+      <svg class="icon" viewBox="0 0 200 190"><use href="#bear" /></svg>
+      <svg class="icon" viewBox="0 0 200 190"><use href="#bear" /></svg>
+    </div>
+    <p>Here's to many more cozy years together, Aeshtly.</p>
+    <small>11.24.2025 &mdash; forever</small>
+  </footer>
+
+  <!-- ================================================================
+       PHOTO POP-UP (filled in by the script)
+       ================================================================ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo" hidden>
+    <div class="lightbox-card">
+      <button class="lightbox-close" id="lb-close" aria-label="Close">&times;</button>
+      <button class="lightbox-nav prev" id="lb-prev" aria-label="Previous photo">&lsaquo;</button>
+      <button class="lightbox-nav next" id="lb-next" aria-label="Next photo">&rsaquo;</button>
+      <img id="lb-img" src="" alt="" />
+      <div class="lightbox-text">
+        <span class="p-date" id="lb-date"></span>
+        <h3 id="lb-title"></h3>
+        <p id="lb-story"></p>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    /* ==============================================================
+       SETTINGS
+       ============================================================== */
+    const SETTINGS = {
+      startDate: "2025-11-24T00:00:00",       // the day you became partners
+      floaterEveryMs: 750,                      // how often a decoration falls
+    };
+
+    // [symbol id, viewBox, color]
+    const FLOATERS = [
+      ["heart",   "0 0 32 30", "#F6A5A5"],
+      ["heart",   "0 0 32 30", "#FFD8D4"],
+      ["flower",  "0 0 40 40", "#FFFFFF"],
+      ["flower",  "0 0 40 40", "#FFD8D4"],
+      ["sparkle", "0 0 30 30", "#F9C80E"],
+      ["drop",    "0 0 24 32", ""],
+    ];
+    const SVG_NS = "http://www.w3.org/2000/svg";
+
+
+    /* ==============================================================
+       1. BOUNCING TITLE LETTERS
+       ============================================================== */
+    (function splitTitle() {
+      const title = document.getElementById("hero-title");
+      const text = title.textContent;
+      title.textContent = "";
+      [...text].forEach((ch, i) => {
+        const span = document.createElement("span");
+        span.textContent = ch === " " ? " " : ch;
+        span.style.animationDelay = (0.35 + i * 0.05) + "s";
+        title.appendChild(span);
+      });
+    })();
+
+
+    /* ==============================================================
+       2. TOGETHER COUNTER
+       ============================================================== */
+    function updateCounter() {
+      const start = new Date(SETTINGS.startDate).getTime();
+      let diff = Math.max(0, Date.now() - start) / 1000;
+
+      const days  = Math.floor(diff / 86400); diff %= 86400;
+      const hours = Math.floor(diff / 3600);  diff %= 3600;
+      const mins  = Math.floor(diff / 60);
+      const secs  = Math.floor(diff % 60);
+
+      document.getElementById("c-days").textContent  = days;
+      document.getElementById("c-hours").textContent = hours;
+      document.getElementById("c-mins").textContent  = mins;
+      document.getElementById("c-secs").textContent  = secs;
+    }
+    updateCounter();
+    setInterval(updateCounter, 1000);
+
+
+    /* ==============================================================
+       3. SVG HELPER + FALLING DECORATIONS
+       ============================================================== */
+    function makeIcon(id, viewBox, color, className) {
+      const svg = document.createElementNS(SVG_NS, "svg");
+      svg.setAttribute("viewBox", viewBox);
+      svg.setAttribute("class", "icon " + className);
+      if (color) svg.style.color = color;
+      const use = document.createElementNS(SVG_NS, "use");
+      use.setAttribute("href", "#" + id);
+      svg.appendChild(use);
+      return svg;
+    }
+
+    const sky = document.getElementById("sky");
+    function spawnFloater() {
+      if (document.hidden) return;
+      const [id, vb, color] = pick(FLOATERS);
+      const el = makeIcon(id, vb, color, "floater");
+      const size = 16 + Math.random() * 18;
+      el.style.width = el.style.height = size + "px";
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.opacity = 0.55 + Math.random() * 0.4;
+      el.style.animationDuration = (9 + Math.random() * 7) + "s";
+      sky.appendChild(el);
+      el.addEventListener("animationend", () => el.remove());
+    }
+    setInterval(spawnFloater, SETTINGS.floaterEveryMs);
+
+
+    /* ==============================================================
+       4. ENVELOPE -> LETTER
+       ============================================================== */
+    const envelope = document.getElementById("envelope");
+    const letter   = document.getElementById("letter-paper");
+    const hint     = document.getElementById("envelope-hint");
+    const sub      = document.getElementById("letter-sub");
+
+    function openLetter() {
+      if (envelope.classList.contains("opened")) return;
+      envelope.classList.add("opened");
+      hint.hidden = true;
+
+      const box = envelope.getBoundingClientRect();
+      burst(box.left + box.width / 2, box.top + box.height / 2, 16);
+
+      // 1) flap flips, paper peeks out   2) envelope leaves   3) letter unfolds
+      setTimeout(() => envelope.classList.add("leaving"), 1300);
+      setTimeout(() => {
+        envelope.hidden = true;
+        sub.textContent = "with all my love";
+        letter.hidden = false;
+        letter.classList.add("show");
+        letter.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 1900);
+    }
+    envelope.addEventListener("click", openLetter);
+    envelope.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLetter(); }
+    });
+
+
+    /* ==============================================================
+       6. SCROLL REVEAL
+       ============================================================== */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+
+    /* ==============================================================
+       7. LITTLE HEART BURST ON EVERY CLICK
+       ============================================================== */
+    function burst(x, y, count = 7) {
+      for (let i = 0; i < count; i++) {
+        const [id, vb, color] = pick(FLOATERS);
+        const el = makeIcon(id, vb, color, "burst");
+        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.4;
+        const dist  = 45 + Math.random() * 55;
+        el.style.left = x + "px";
+        el.style.top  = y + "px";
+        el.style.setProperty("--dx",  Math.cos(angle) * dist + "px");
+        el.style.setProperty("--dy",  Math.sin(angle) * dist + "px");
+        el.style.setProperty("--rot", (Math.random() * 180 - 90) + "deg");
+        document.body.appendChild(el);
+        el.addEventListener("animationend", () => el.remove());
+      }
+    }
+    document.addEventListener("click", e => {
+      if (!e.target.closest("#envelope")) burst(e.clientX, e.clientY);
+    });
+
+
+    /* ==============================================================
+       8. SCRAPBOOK PHOTO POP-UP
+       ============================================================== */
+    const photos   = [...document.querySelectorAll(".polaroid")];
+    const lightbox = document.getElementById("lightbox");
+    let current = 0;
+
+    function showPhoto(i) {
+      current = (i + photos.length) % photos.length;
+      const p = photos[current];
+      const img = p.querySelector("img");
+      document.getElementById("lb-img").src   = img.src;
+      document.getElementById("lb-img").alt   = img.alt;
+      document.getElementById("lb-date").textContent  = p.dataset.date;
+      document.getElementById("lb-title").textContent = p.dataset.title;
+      document.getElementById("lb-story").textContent = p.dataset.story;
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+    function closePhoto() {
+      lightbox.hidden = true;
+      document.body.style.overflow = "";
+      photos[current].focus();
+    }
+
+    photos.forEach((p, i) => p.addEventListener("click", () => showPhoto(i)));
+    document.getElementById("lb-close").addEventListener("click", closePhoto);
+    document.getElementById("lb-prev").addEventListener("click", e => { e.stopPropagation(); showPhoto(current - 1); });
+    document.getElementById("lb-next").addEventListener("click", e => { e.stopPropagation(); showPhoto(current + 1); });
+    lightbox.addEventListener("click", e => { if (e.target === lightbox) closePhoto(); });
+    document.addEventListener("keydown", e => {
+      if (lightbox.hidden) return;
+      if (e.key === "Escape")     closePhoto();
+      if (e.key === "ArrowLeft")  showPhoto(current - 1);
+      if (e.key === "ArrowRight") showPhoto(current + 1);
+    });
+
+
+    /* ==============================================================
+       HELPERS
+       ============================================================== */
+    function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+  </script>
+</body>
+</html>
